@@ -26,6 +26,10 @@ class Bank:
     def bank_code(self) -> str:
         return self.__bank_code
     
+    @property
+    def clients(self):
+        return self.__clients
+    
     @bank_code.setter
     def set_bank_code(self, new_code: str):
         self.__bank_code = new_code
