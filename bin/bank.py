@@ -1,9 +1,15 @@
+'''
+
+
+Neetre 2024
+'''
 
 import re
-from client import Client\
+from client import Client
+from accounts import *
 
 class Bank:
-    def __init__(self, name, bank_code) -> None:
+    def __init__(self, name: str, bank_code: str) -> None:
         self.__name = name
         self.__bank_code = bank_code
         self.__clients = []
@@ -13,7 +19,7 @@ class Bank:
         return self.__name
     
     @name.setter
-    def set_name(self, new_name):
+    def set_name(self, new_name: str):
         self.__name = new_name
     
     @property
@@ -21,10 +27,10 @@ class Bank:
         return self.__bank_code
     
     @bank_code.setter
-    def set_bank_code(self, new_code):
+    def set_bank_code(self, new_code: str):
         self.__bank_code = new_code
         
-    def new_client(self, id, name, surname, tell, email, password):
+    def new_client(self, id: str, name: str, surname: str, tell: str, email: str, password: str):
         for client in self.__clients:
             if client.id == id:
                 print("Client already exist")
@@ -36,9 +42,9 @@ class Bank:
     def calculate_monthly_interest(self):
         for client in self.__clients:
             for account in client.bank_accounts:
-                if isinstance(account, ):
+                if isinstance(account, AccountCD):
                     account.add_inter()
-                if isinstance(account, ):
+                if isinstance(account, AccountCDV):
                     account.add_inter()
                     
     def overall_bank_balance(self):
@@ -47,15 +53,15 @@ class Bank:
             tot_bank += client.get_tot_money()
         return tot_bank
     
-    def overall_category_balance(self, category):
+    def overall_category_balance(self, category: str):
         tot_category = 0
         for client in self.__clients:
             for account in client.bank_accounts:
-                if category == "CC" and isinstance(account, ):
+                if category == "CC" and isinstance(account, AccountCC):
                     tot_category += account.money
-                elif category == "CD" and isinstance(account, ):
+                elif category == "CD" and isinstance(account, AccountCD):
                     tot_category += account.money
-                elif category == "CDV" and isinstance(account, ):
+                elif category == "CDV" and isinstance(account, AccountCDV):
                     tot_category += account.money
         return tot_category
     

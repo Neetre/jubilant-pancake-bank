@@ -1,3 +1,9 @@
+'''
+
+
+Neetre 2024
+'''
+
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.backends import default_backend
@@ -7,6 +13,15 @@ from cryptography.fernet import Fernet
 class Security:
     def __init__(self) -> None:
         pass
+
+    @staticmethod
+    def generate(password):
+        key = Security.generate_key()
+        Security.save_key(key)
+        
+        enc_pwd = Security.encrypt_password(password, key)
+        
+        return enc_pwd
     
     @staticmethod
     def generate_key():
