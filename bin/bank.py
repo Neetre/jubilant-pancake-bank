@@ -42,7 +42,22 @@ class Bank:
                     account.add_inter()
                     
     def overall_bank_balance(self):
-        tot = 0
+        tot_bank = 0
         for client in self.__clients:
-            tot += client.get_tot_money
-        return tot
+            tot_bank += client.get_tot_money()
+        return tot_bank
+    
+    def overall_category_balance(self, category):
+        tot_category = 0
+        for client in self.__clients:
+            for account in client.bank_accounts:
+                if category == "CC" and isinstance(account, ):
+                    tot_category += account.money
+                elif category == "CD" and isinstance(account, ):
+                    tot_category += account.money
+                elif category == "CDV" and isinstance(account, ):
+                    tot_category += account.money
+        return tot_category
+    
+    def __str__(self) -> str:
+        return f"Bank: {self.__name} - Code: {self.__bank_code}"
