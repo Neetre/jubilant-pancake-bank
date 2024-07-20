@@ -20,8 +20,8 @@ def generate_iban(country_code: str):
 
 
 class Account:
-    def __init__(self, id_client: str, money: float):
-        self.__IBAN = generate_iban()
+    def __init__(self, id_client: str, money: float, country: str):
+        self.__IBAN = generate_iban(country)
         self.__id_client = id_client
         self.__money = money
         
@@ -54,8 +54,8 @@ class Account:
     
 
 class AccountCC(Account):
-    def __init__(self, id_client: str, money: float, trans_cost=2.0, n_trans_free=3):
-        super().__init__(id_client, money)
+    def __init__(self, id_client: str, money: float, trans_cost=2.0, n_trans_free=3, country=""):
+        super().__init__(id_client, money, country)
         self.__trans_cost = trans_cost
         self.__n_trans_free = n_trans_free
         self.__n_trans = 0

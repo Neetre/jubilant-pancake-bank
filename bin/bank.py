@@ -13,6 +13,7 @@ class Bank:
         self.__name = name
         self.__bank_code = bank_code
         self.__clients = []
+        self.__country = bank_code[:2]
         
     @property
     def name(self) -> str:
@@ -34,13 +35,17 @@ class Bank:
     def set_bank_code(self, new_code: str):
         self.__bank_code = new_code
         
-    def new_client(self, id: str, name: str, surname: str, tell: str, email: str, password: str):
+    @property
+    def country(self) -> str:
+        return self.__country
+        
+    def new_client(self, id: str, name: str, surname: str, tell: str, email: str, password: str, country: str):
         for client in self.__clients:
             if client.id == id:
                 print("Client already exist")
                 return
         
-        new_client = Client(id, name, surname, tell, email, password)
+        new_client = Client(id, name, surname, tell, email, password, country)
         self.__clients.append(new_client)
         
     def calculate_monthly_interest(self):

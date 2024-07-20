@@ -9,12 +9,13 @@ from security import Security
 PATTERN_IBAN = r"^[A-Z]{2}\d{2}[A-Z\d]{11,30}$"
 
 class Client:
-    def __init__(self, id, name, surname, tell, email, password) -> None:
+    def __init__(self, id, name, surname, tell, email, password, country) -> None:
         self.__id = id
         self.__name = name
         self.__surname = surname
         self.__tell = tell
         self.__email = email
+        self.__country = country
         self.__password = Security.generate(password)
         self.__active = True
 
@@ -59,6 +60,10 @@ class Client:
     @email.setter
     def email(self, new_email):
         self.__email = new_email
+        
+    @property
+    def country(self):
+        return self.__country
     
     @property
     def password(self) -> str:
