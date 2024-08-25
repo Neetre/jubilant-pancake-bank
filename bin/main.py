@@ -4,6 +4,7 @@ import os
 from data_manager import DataManager
 from accounts import *
 
+
 def main(logger: Log):
     
     datamanager = DataManager()
@@ -14,7 +15,8 @@ def main(logger: Log):
     
     bank.new_client("C1", "Mario", "Rossi", "1234567890", "test@gmail.com", "pizza_red", "DE")
     logger.write_msg("Client created")
-    datamanager.insert_client("C1", "Mario", "Rossi", "1234567890", "test@gmail.com", "pizza_red")
+    for client in bank.clients:
+        datamanager.insert_client(*client)
 
     for client in bank.clients:
         if client.name == "Mario":
@@ -25,9 +27,11 @@ def main(logger: Log):
     print(f"The bank has: {bank.overall_bank_balance()}")
 
     for category in ["CC", "CD", "CDV"]:
-        
         print(f"Money of category {category}: {bank.overall_category_balance(category)}")
-        
+
+    
+
+
 if __name__ == "__main__":
     name_f = os.path.basename(__file__)
     logger = Log(name_f)

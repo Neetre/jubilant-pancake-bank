@@ -15,8 +15,8 @@ class DataManager:
     def create_bank_table(self):
         self.execute_sql_command("""
         CREATE TABLE IF NOT EXISTS bank (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            bank_code TEXT PRIMARY KEY,
+            id INTEGER PRIMARY KEY,
+            bank_code TEXT,
             name TEXT NOT NULL
         )
         """)
@@ -29,7 +29,8 @@ class DataManager:
             surname TEXT NOT NULL,
             tell TEXT NOT NULL,
             email TEXT NOT NULL,
-            password TEXT NOT NULL
+            password TEXT NOT NULL,
+            key_pair TEXT NOT NULL
         )
         """)
         

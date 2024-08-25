@@ -1,6 +1,4 @@
 '''
-
-
 Neetre 2024
 '''
 
@@ -8,7 +6,7 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.backends import default_backend
 from cryptography.fernet import Fernet
-
+import numpy as np
 
 class Security:
     def __init__(self) -> None:
@@ -73,3 +71,9 @@ class Security:
             backend=default_backend()
         )
         return private_key
+    
+    @staticmethod
+    def generate_2FA_code():
+        # 6 cifers, random
+        code = np.random.randint(100000, 999999)
+        return code
