@@ -5,18 +5,16 @@ from data_manager import DataManager
 from accounts import *
 
 
-def main(logger: Log):
-    
+def main(logger: object):
     datamanager = DataManager()
     
     bank = Bank("Testing Bank", "BP001DE")
     logger.write_msg("Bank created")
     datamanager.insert_bank(bank.bank_code, bank.name)
     
-    bank.new_client("C1", "Mario", "Rossi", "1234567890", "test@gmail.com", "pizza_red", "DE")
+    client = bank.new_client("C1", "Mario", "Luigi", "1234567890", "test@gmail.com", "pizza_luig", "DE")
     logger.write_msg("Client created")
-    for client in bank.clients:
-        datamanager.insert_client(*client)
+    datamanager.insert_client(client.id, client.name, client.surname, client.tell, client.email, client.password.decode())
 
     for client in bank.clients:
         if client.name == "Mario":
@@ -28,8 +26,6 @@ def main(logger: Log):
 
     for category in ["CC", "CD", "CDV"]:
         print(f"Money of category {category}: {bank.overall_category_balance(category)}")
-
-    
 
 
 if __name__ == "__main__":

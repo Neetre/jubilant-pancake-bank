@@ -29,8 +29,7 @@ class DataManager:
             surname TEXT NOT NULL,
             tell TEXT NOT NULL,
             email TEXT NOT NULL,
-            password TEXT NOT NULL,
-            key_pair TEXT NOT NULL
+            password TEXT NOT NULL
         )
         """)
         

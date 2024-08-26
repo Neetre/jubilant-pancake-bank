@@ -45,7 +45,8 @@ class Bank:
         
         new_client = Client(id, name, surname, tell, email, password, country)
         self.__clients.append(new_client)
-        
+        return new_client
+
     def calculate_monthly_interest(self):
         for client in self.__clients:
             for account in client.bank_accounts:

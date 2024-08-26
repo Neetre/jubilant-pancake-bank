@@ -3,7 +3,9 @@ import os.path
 from datetime import datetime
 from icecream import ic
 
+
 ic.disable()
+
 
 class Log:
     def __init__(self, name_f: str, f_log="../log/trace.log"):
@@ -41,7 +43,8 @@ class Log:
         current_time = datetime.now().strftime("%H:%M:%S del giorno %m/%d/%Y")
         with open(self.f_log, 'a') as file:
             file.write(f"File: {self.name_f}, Message: {msg}, Time: {current_time}\n")
-            
+
+
 if __name__ == "__main__":
     name_f = os.path.basename(__file__)
     logger = Log(name_f)
